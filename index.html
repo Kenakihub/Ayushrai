@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Creative CV</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #f6f7fb, #ebe8ff);
+      color: #333;
+      transition: background 0.5s ease;
+    }
+
+    body.dark-mode {
+      background: linear-gradient(to right, #1a1a2e, #16213e);
+      color: #f0f0f0;
+    }
+
+    .cv-container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1100px;
+      margin: 3rem auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      background: #ffffff;
+      transition: all 0.5s ease;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    body.dark-mode .cv-container {
+      background: #2d2d44;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .left-panel {
+      background: linear-gradient(135deg, #2e2459, #7f53ac);
+      color: #fff;
+      padding: 2.5rem;
+      flex: 1 1 35%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      transition: all 0.5s ease;
+    }
+
+    body.dark-mode .left-panel {
+      background: linear-gradient(135deg, #1a1a2e, #16213e);
+    }
+
+   .profile-pic {
+  position: relative;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-pic img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%; /* Circle for a more modern look */
+  margin-bottom: 1rem;
+  border: 5px solid #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.profile-pic img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.25);
+}
+
+.profile-pic .status-indicator {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  background: #4CAF50; /* Online green */
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 4px #7f53ac66;
+}
+
+
+    .left-panel h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+      animation: slideInLeft 0.8s ease-out;
+    }
+
+    @keyframes slideInLeft {
+      from { transform: translateX(-30px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .section {
+      width: 100%;
+      margin-top: 2rem;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .section h2 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+      padding-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .section h2 i {
+      margin-right: 10px;
+    }
+
+    .language-list li {
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+   .progress-bar {
+  background: #eaeaea;
+  border-radius: 999px;
+  height: 10px;
+  overflow: hidden;
+  width: 100%;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0; /* dynamic width */
+  background: #6c63ff; /* soft purple - modern & minimal */
+  border-radius: 999px;
+  transition: width 0.8s ease;
+  animation: subtleGlow 2s ease-in-out infinite alternate;
+}
+
+/* 👀 Soft breathing glow */
+@keyframes subtleGlow {
+  0% {
+    box-shadow: 0 0 4px rgba(108, 99, 255, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(108, 99, 255, 0.5);
+  }
+}
+
+    .skills, .hobbies {
+      display: flex;
+      gap: 12px;
+      justify-content: start;
+      flex-wrap: wrap;
+    }
+
+    .skill {
+      background: #fff;
+      color: #7f53ac;
+      padding: 10px;
+      border-radius: 50%;
+      font-weight: bold;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+    }
+
+    .skill:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .skill::after {
+      content: attr(data-title);
+      position: absolute;
+      background: #333;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: opacity 0.3s;
+      z-index: 10;
+    }
+
+    .skill:hover::after {
+      opacity: 1;
+    }
+
+    .hobbies span {
+      font-size: 1.5rem;
+      background: #fff;
+      color: #7f53ac;
+      padding: 8px;
+      border-radius: 50%;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .hobbies span:hover {
+      transform: scale(1.2) rotate(10deg);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-5px);
+    }
+
+    .right-panel {
+      background: #fdfcff;
+      padding: 2.5rem;
+      flex: 1 1 65%;
+      transition: all 0.5s ease;
+    }
+
+    body.dark-mode .right-panel {
+      background: #3a3a5a;
+    }
+
+    .contact h2 {
+      font-size: 2.2rem;
+      color: #7f53ac;
+      margin-bottom: 0.3rem;
+      animation: slideInRight 0.8s ease-out;
+    }
+
+    body.dark-mode .contact h2 {
+      color: #c5a3ff;
+    }
+
+    @keyframes slideInRight {
+      from { transform: translateX(30px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .contact p {
+      margin-top: 0.4rem;
+      font-size: 0.97rem;
+    }
+
+    body.dark-mode .contact p {
+      color: #d0d0e4;
+    }
+
+    .section h2 {
+      color: #7f53ac;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+    }
+
+    body.dark-mode .section h2 {
+      color: #c5a3ff;
+    }
+
+    .section h2 i {
+      margin-right: 10px;
+    }
+
+    .section p {
+      font-size: 0.96rem;
+      color: #444;
+      background: #f3f2fc;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode .section p {
+      background: #4a4a6a;
+      color: #d0d0e4;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .timeline li {
+      margin-bottom: 1rem;
+      list-style: none;
+      background: #fff4e6;
+      padding: 10px 15px;
+      border-left: 5px solid #f4a261;
+      border-radius: 6px;
+      transition: transform 0.3s ease;
+    }
+
+    body.dark-mode .timeline li {
+      background: #5a4a6a;
+      border-left: 5px solid #e76f51;
+    }
+
+    .timeline li:hover {
+      transform: translateX(5px);
+    }
+
+    .timeline strong {
+      display: inline-block;
+      width: 110px;
+      color: #f4a261;
+    }
+
+    body.dark-mode .timeline strong {
+      color: #e76f51;
+    }
+
+    .download-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #7f53ac;
+      color: #fff;
+      padding: 14px 24px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .download-btn:hover {
+      background: #5e3b91;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      background: #7f53ac;
+      color: #fff;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      z-index: 100;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: rotate(30deg);
+    }
+
+    body.dark-mode .theme-toggle {
+      background: #c5a3ff;
+      color: #1a1a2e;
+    }
+
+    /* New sections */
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .portfolio-item {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      height: 120px;
+      background: #e6e6fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      color: #7f53ac;
+      position: relative;
+    }
+
+    body.dark-mode .portfolio-item {
+      background: #4a4a6a;
+      color: #c5a3ff;
+    }
+
+    .portfolio-item:hover {
+      transform: scale(1.03);
+    }
+
+    .portfolio-item .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(127, 83, 172, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: white;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .portfolio-item:hover .overlay {
+      opacity: 1;
+    }
+
+    .certifications {
+      margin-top: 15px;
+    }
+
+    .certification {
+      background: #f3f2fc;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+    }
+
+    body.dark-mode .certification {
+      background: #4a4a6a;
+    }
+
+    .certification:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .certification-icon {
+      font-size: 2rem;
+      margin-right: 15px;
+      color: #7f53ac;
+    }
+
+    body.dark-mode .certification-icon {
+      color: #c5a3ff;
+    }
+
+    .certification-details {
+      flex: 1;
+    }
+
+    .certification-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .certification-org {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 5px;
+    }
+
+    body.dark-mode .certification-org {
+      color: #aaa;
+    }
+
+    .certification-date {
+      font-size: 0.8rem;
+      color: #999;
+    }
+
+    body.dark-mode .certification-date {
+      color: #bbb;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .cv-container {
+        flex-direction: column;
+      }
+
+      .left-panel, .right-panel {
+        flex: 1 1 100%;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .section {
+        text-align: left;
+      }
+
+      .contact h2 {
+        font-size: 1.8rem;
+      }
+
+      .download-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+
+      .theme-toggle {
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+      }
+
+      .portfolio {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Print styles */
+    @media print {
+      .download-btn, .theme-toggle {
+        display: none;
+      }
+      
+      body {
+        background: white !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      
+      .cv-container {
+        box-shadow: none;
+        max-width: 100%;
+        margin: 0;
+        border-radius: 0;
+      }
+      
+      .left-panel {
+        background: #2e2459 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      
+      .skill::after {
+        display: none;
+      }
+      
+      .portfolio-item .overlay {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cv-container">
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <div class="profile-pic">
+        <img src="Xineum.jpg" alt="Profile Picture">
+        <div class="status-indicator"></div>
+      </div>
+      <h1>Hello! مرحبا</h1>
+
+      <div class="section">
+        <h2><i class="fas fa-globe-americas"></i> Languages</h2>
+        <ul class="language-list">
+          <li>Nepali
+            <div class="progress-bar"><div class="progress-fill" style="width: 80%"></div></div>
+          </li>
+          <li>English
+            <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
+          </li>
+          <li>Hindi
+            <div class="progress-bar"><div class="progress-fill" style="width: 60%"></div></div>
+          </li>
+          <li>Arabic
+            <div class="progress-bar"><div class="progress-fill" style="width: 30%"></div></div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2><i class="fas fa-tools"></i> Skills</h2>
+  <div class="skills">
+    <div class="skill" data-title="Customer Service - Friendly, Patient, Attentive">😊</div>
+    <div class="skill" data-title="Adaptability & Time Management">⏳</div>
+    <div class="skill" data-title="Teamwork & Communication">🤝</div>
+    <div class="skill" data-title="Basic Computer Knowledge">💻</div>
+    <div class="skill" data-title="Fluent in Nepali, English, and Hindi">🌐</div>
+  </div>
+      </div>
+
+      <div class="section">
+        <h2><i class="fas fa-heart"></i> Hobbies</h2>
+        <div class="hobbies">
+          <span title="Gaming">🎮</span>
+          <span title="Photography">📷</span>
+          <span title="Music">🎧</span>
+          <span title="Travel">✈️</span>
+          <span title="Reading">📚</span>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" title="Behance"><i class="fab fa-behance"></i></a>
+        <a href="https://wa.me/9779824306584?text=Hey%20Aayush!%20Saw%20your%20profile%20and%20wanted%20to%20connect." title="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/aayushrrai1.1x1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" title="Instagram" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-instagram"></i>
+  </a>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <div class="contact">
+        <h2>Ayush Rai</h2>
+        <p>Creative Graphic Designer</p>
+        <p>📧 roselilyayush68@gmail.com</p>
+        <p>🌐 roselilyayush68@gmail.com</p>
+        <p>📞 +971 050 669 5782</p>
+        <p>💬 +977 9824306584</p>
+        <p>📍 Al Qasimia, Sharhjah, UAE</p>
+      </div>
+
+      <div class="section">
+        <h2><i class="fas fa-user"></i> About Me</h2>
+        <p>I’m Ayush Rai, a motivated and adaptable professional with a passion for hospitality and a growing foundation in technology and design. I thrive in fast-paced environments where teamwork, honesty, and dedication are key. With hands-on experience as a barista, waiter, and gym assistant, I consistently deliver exceptional service and a positive customer experience. Alongside this, my background in computer science has equipped me with essential skills in website design and graphic principles, giving me a creative edge. Fluent in Nepali, English, and Hindi, I bring strong communication skills and a friendly, approachable attitude. I’m eager to continue learning, growing, and contributing my energy and passion to a team that values hard work and collaboration.</p>
+      </div>
+
+      <div class="section">
+        <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+        <ul class="timeline">
+          <li><strong>2022-2024</strong> - NEB +2, Science , Janata Secondary School</li>
+          <li><strong>Currently Studying</strong> - Undergraduate Student, BIT , Quntam University, S-Dubai</li>
+        </ul>
+      </div>
+
+    <div class="section">
+  <h2><i class="fas fa-briefcase"></i> Experience</h2>
+  <ul class="timeline">
+
+    <li><strong>2022 – 2024</strong> – Computer Science Student  
+  <br>Gained foundational knowledge in computer basics, website design, and graphic design principles.</li>
+
+    <li><strong>Feb 2024 – Mar 2025 </strong> – Gym Assistant  
+      <br>Started casual training in 2023 and became more dedicated after completing +2 exams. Assisted clients, maintained equipment, and supported workout routines.</li>
+
+    <li><strong>Feb 2025 – April 2025</strong> – Barista Trainee @ Yokma Café  
+      <br>Completed a 3-month barista course with training in espresso making, latte art, hygiene standards, and customer service.</li>
+
+    <li><strong>Apr 2024 – Dec 2024</strong> – Waiter (+8 months)
+      <br>Worked part-time while completing barista training. Handled customer orders, maintained a friendly dining experience, and supported daily restaurant operations.</li>
+
+    <li><strong>Jan 2024 – April 2024</strong> – School Teacher (Training)  
+      <br>Joined a 6-month school teaching program but participated for 4 months. Assisted during training camps and classroom activities.</li>
+  </ul>
+</div>
+
+
+      <div class="section">
+  <h2><i class="fas fa-palette"></i> Portfolio</h2>
+  <div class="portfolio">
+    <div class="portfolio-item">
+      Gym Assistant Experience
+      <div class="overlay">Worked as a gym assistant for 13+ months—helped clients with equipment, maintained cleanliness, and supported basic fitness routines</div>
+    </div>
+    <div class="portfolio-item">
+      Café Branding & Menu Design
+      <div class="overlay">Designed logo, menu layout, and branding assets for a local café during barista training</div>
+    </div>
+    <div class="portfolio-item">
+      Personal Portfolio Website (Basic)
+      <div class="overlay">Built a clean, responsive personal website using HTML & CSS to showcase my skills</div>
+    </div>
+    <div class="portfolio-item">
+      Social Media Posters
+      <div class="overlay">Created engaging Instagram & Facebook posts using Photoshop and Illustrator</div>
+    </div>
+    <div class="portfolio-item">
+      Concept UI Design
+      <div class="overlay">Designed a fitness tracker app UI as a concept using Figma and Illustrator</div>
+    </div>
+    <div class="portfolio-item">
+      Early Childhood Teaching Experience
+      <div class="overlay">Taught nursery and LKG students for 2 months—developed fun learning activities and improved classroom communication skills</div>
+    </div>
+  </div>
+</div>
+
+      <div class="section">
+  <h2><i class="fas fa-certificate"></i> Certifications</h2>
+  <div class="certifications">
+    <div class="certification">
+      <div class="certification-icon">
+        <i class="fas fa-coffee"></i>
+      </div>
+      <div class="certification-details">
+        <div class="certification-name">Certified Barista Level 1</div>
+        <div class="certification-org">Yokma Café</div>
+        <div class="certification-date">Issued: April 2025</div>
+      </div>
+    </div>
+
+    <div class="certification">
+      <div class="certification-icon">
+        <i class="fas fa-laptop-code"></i>
+      </div>
+      <div class="certification-details">
+        <div class="certification-name">Basic Computer</div>
+        <div class="certification-org">Google</div>
+        <div class="certification-date">Issued: Jan 2024</div>
+      </div>
+    </div>
+
+    <div class="certification">
+      <div class="certification-icon">
+        <i class="fas fa-dumbbell"></i>
+      </div>
+      <div class="certification-details">
+        <div class="certification-name">Certified Fitness Trainer (CFT)</div>
+        <div class="certification-org">Planet Fitness</div>
+        <div class="certification-date">Issued: May 2024</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+  <button class="download-btn" onclick="window.print()">
+    <i class="fas fa-download"></i> Download CV
+  </button>
+  
+  <div class="theme-toggle" id="themeToggle">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <script>
+window.onload = () => {
+    const fill = document.querySelector('.progress-fill');
+    fill.style.width = '70%'; // Or whatever % you want
+  };
+
+    // Theme toggle functionality
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      
+      if (document.body.classList.contains('dark-mode')) {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      }
+    });
+    
+    // Animate progress bars on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const progressBars = document.querySelectorAll('.progress-fill');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const bar = entry.target;
+            const width = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => {
+              bar.style.width = width;
+            }, 300);
+          }
+        });
+      });
+      
+      progressBars.forEach(bar => {
+        observer.observe(bar);
+      });
+    });
+  </script>
+</body>
+</html>
